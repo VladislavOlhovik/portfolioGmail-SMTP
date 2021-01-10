@@ -8,12 +8,16 @@ app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+let login = process.env.SMTP_LOGIN || '';
+let pass = process.env.SMTP_PASSWORD || '';
+
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "-",
-    pass: "-",
+    user: login,
+    pass: pass,
   },
 });
 
